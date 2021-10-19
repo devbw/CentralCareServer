@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "favoris",
+  "info": {
+    "name": "Favoris"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "annonce": {
+      "model": "annonces"
+    }
+  }
+}
