@@ -2,12 +2,13 @@
   "kind": "collectionType",
   "collectionName": "favoris",
   "info": {
-    "name": "Favoris"
+    "name": "Favori",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -15,7 +16,7 @@
       "plugin": "users-permissions",
       "model": "user"
     },
-    "annonce": {
+    "annonces": {
       "model": "annonces"
     }
   }

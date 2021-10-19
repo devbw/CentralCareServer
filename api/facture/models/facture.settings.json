@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "factures",
+  "info": {
+    "name": "Facture"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "numero_facture": {
+      "type": "string"
+    }
+  }
+}
