@@ -1,39 +1,91 @@
 {
-  "name": "cc-back-strapi",
-  "private": true,
-  "version": "0.1.0",
-  "description": "A Strapi application",
-  "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "build:win": "cross-env NODE_ENV=production npm run build",
-    "strapi": "strapi"
-  },
-  "dependencies": {
-    "cross-env": "^7.0.3",
-    "knex": "0.21.18",
-    "sqlite3": "5.0.0",
-    "strapi": "3.6.8",
-    "strapi-admin": "3.6.8",
-    "strapi-connector-bookshelf": "3.6.8",
-    "strapi-plugin-content-manager": "3.6.8",
-    "strapi-plugin-content-type-builder": "3.6.8",
-    "strapi-plugin-email": "3.6.8",
-    "strapi-plugin-i18n": "3.6.8",
-    "strapi-plugin-upload": "3.6.8",
-    "strapi-plugin-users-permissions": "3.6.8",
-    "strapi-utils": "3.6.8"
-  },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "0043e2c4-05c8-4e3c-8be0-05ec7aa82cb5"
-  },
-  "engines": {
-    "node": ">=10.16.0 <=14.x.x",
-    "npm": "^6.0.0"
-  },
-  "license": "MIT"
+	"name": "CentralCareServer",
+	"private": true,
+	"version": "0.1.0",
+	"description": "A Strapi application for CentralCare",
+	"type": "commonjs",
+	"scripts": {
+		"develop": "strapi develop",
+		"start": "strapi start",
+		"build": "strapi build",
+		"build:win": "cross-env NODE_ENV=production npm run build",
+		"strapi": "strapi",
+		"test": "jest --forceExit --detectOpenHandles",
+		"coverage": "jest --coverage --forceExit --detectOpenHandles",
+		"eslint-fix": "eslint . --fix",
+		"eslint": "eslint .",
+		"lint": "prettier --check .",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"cross-env": "^7.0.3",
+		"knex": "0.21.18",
+		"strapi": "3.6.8",
+		"strapi-admin": "3.6.8",
+		"strapi-connector-bookshelf": "3.6.8",
+		"strapi-plugin-content-manager": "3.6.8",
+		"strapi-plugin-content-type-builder": "3.6.8",
+		"strapi-plugin-email": "3.6.8",
+		"strapi-plugin-i18n": "3.6.8",
+		"strapi-plugin-upload": "3.6.8",
+		"strapi-plugin-users-permissions": "3.6.8",
+		"strapi-utils": "3.6.8"
+	},
+	"author": {
+		"name": "A Strapi developer"
+	},
+	"strapi": {
+		"uuid": "0043e2c4-05c8-4e3c-8be0-05ec7aa82cb5"
+	},
+	"engines": {
+		"node": ">=10.16.0 <=14.x.x",
+		"npm": "^6.0.0"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/core": "^7.15.8",
+		"@babel/eslint-parser": "^7.15.8",
+		"eslint": "^8.0.1",
+		"eslint-config-google": "^0.14.0",
+		"husky": "^7.0.2",
+		"jest": "^27.3.1",
+		"prettier": "^2.4.1",
+		"sqlite3": "^5.0.2",
+		"supertest": "^6.1.6"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*": [
+			"eslint --fix",
+			"prettier --write",
+			"git add"
+		]
+	},
+	"jest": {
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			".tmp",
+			".cache"
+		],
+		"testEnvironment": "node",
+		"collectCoverage": false,
+		"collectCoverageFrom": [
+			"api/**/*.js",
+			"config/functions/**/*.js",
+			"config/policies/**/*.js",
+			"extensions/**/*.js"
+		],
+		"coverageThreshold": {
+			"global": {
+				"branches": 70,
+				"functions": 70,
+				"lines": 70,
+				"statements": 70
+			}
+		}
+	}
 }
